@@ -1,48 +1,17 @@
-class Circle1(object):
-    def __init__(self, coord_x, coord_y, radio):
-        self.coord_x = coord_x
-        self.coord_y = coord_y
-        self.radio = radio
-
-    def hash(self):
-        return hash((self.coord_x, self.coord_y, self.radio))
-
-
-class Circle2(object):
-    def __init__(self, coord_x, coord_y, radio):
-        self.coord_x = coord_x
-        self.coord_y = coord_y
-        self.radio = radio
-        self.id_x = id(self.coord_x)
-        self.id_y = id(self.coord_y)
-        self.id_radio = id(self.radio)
-
-    def hash_id(self):
-        return hash((self.id_x, self.id_y, self.id_radio))
+from circles_classes.circle_1 import Circle1
+from circles_classes.circle_2 import Circle2
 
 
 def main():
-    instance_1_circ_1 = Circle1(1, 2, 3)
-    instance_2_circ_1 = Circle1(1, 2, 3)
+    instance_1_circ_1 = Circle1(1, 2, 3, 'circulo1_1')
+    instance_2_circ_1 = Circle1(1, 2, 3, 'circulo2_1')
 
-    instance_1_circ_2 = Circle2(1, 2, 3)
-    instance_2_circ_2 = Circle2(1, 2, 3)
+    instance_1_circ_2 = Circle2(1, 2, 3, 'circulo1_2')
+    instance_2_circ_2 = Circle2(1, 2, 3, 'circulo2_2')
 
-    set_instances = {instance_1_circ_1.hash(), instance_2_circ_1.hash(), instance_1_circ_2.hash_id(),
-                     instance_2_circ_2.hash_id()}
+    set_instances = {instance_1_circ_1, instance_2_circ_1, instance_1_circ_2, instance_2_circ_2}
+    # print(instance_1_circ_1, instance_2_circ_1, instance_1_circ_2, instance_2_circ_2)
     print(set_instances)
-
-    if instance_1_circ_1.hash() == instance_2_circ_1.hash():
-        print(
-            'Los hash sobre los contenidos de dos instancias de la misma clase son iguales y es %i' % instance_1_circ_1.hash())
-    else:
-        print('Los hash sobre los contenidos de dos instancias de la misma clase NO son iguales')
-
-    if instance_1_circ_2.hash_id() == instance_2_circ_2.hash_id():
-        print(
-            'Los hash sobre el ID de dos instancias de la misma clase son iguales y es %i' % instance_1_circ_2.hash_id())
-    else:
-        print('Los hash sobre el ID de dos instancias de la misma clase NO son iguales')
 
 
 if __name__ == '__main__':
